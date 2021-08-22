@@ -1,0 +1,9 @@
+/Debug/
+/.vs/
+*.exe
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+main.cpp
+*.exe
