@@ -1,3 +1,6 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include <cstddef>
 #include <memory>
 
@@ -36,6 +39,8 @@ namespace YING {
 		void push_back(const T& value);
 		void pop_back();
 
+		bool empty() const;
+
 		Iterator begin() const;
 		Iterator end() const;
 		
@@ -53,3 +58,4 @@ namespace YING {
 
 }
 
+#endif

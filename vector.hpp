@@ -79,6 +79,11 @@ namespace YING {
 	}
 
 	template <typename T, typename Allocator>
+	bool Vector<T, Allocator>::empty() const {
+		return size_ == 0;
+	}
+
+	template <typename T, typename Allocator>
 	void Vector<T, Allocator>::expand() {
 		capacity_ *= 2;
 		T* temp_ = alloc_.allocate(capacity_);
