@@ -62,7 +62,7 @@ namespace YING {
 	}
 
 	template <typename T, typename Allocator>
-	T Vector<T, Allocator>::operator[](int index) const {
+	T& Vector<T, Allocator>::operator[](int index) const {
 		assert(index < size_ && index >= 0);
 		return data_[index];
 	}

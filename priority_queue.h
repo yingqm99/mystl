@@ -25,7 +25,7 @@ namespace YING {
 		void fix_down_(int index_);
 		void fix_up_(int index_);
 		int find_(const T& value) const;
-		YING::Vector v_;
+		YING::Vector<T> v_;
 		Compare comp_;
 	};
 

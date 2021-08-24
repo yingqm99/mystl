@@ -1,6 +1,7 @@
 #include "priority_queue.h"
 #include <iostream>
 #include <cassert>
+#include <algorithm>
 
 namespace YING {
 	template <typename T, typename Compare>
@@ -29,7 +30,7 @@ namespace YING {
 			int child_2_ = fix_point_ * 2 + 1;
 			if (child_2 == v_size()) {
 				if (comp_(v_[fix_point_], v_[child_1_])) {
-					swap(v_[fix_point_], v_[child_1_]);
+					std::swap(v_[fix_point_], v_[child_1_]);
 					break;
 				}
 			}
@@ -39,7 +40,7 @@ namespace YING {
 					child_swap_ = child_2_;
 				}
 				if (comp_(v_[fix_point_], v_[child_1_])) {
-					swap(v_[fix_point_], v_[child_1_]);
+					std::swap(v_[fix_point_], v_[child_1_]);
 					fix_point_ = child_swap_;
 				}
 				else {
@@ -52,10 +53,10 @@ namespace YING {
 	template <typename T, typename Compare>
 	void Heap_<T, Compare>::fix_up_(int index_) {
 		int fix_point_ = index_;
-		while (fix_point > 1) {
+		while (fix_point_ > 1) {
 			int parent_point_ = index_ / 2;
 			if (comp_(v_[parent_point_], v_[fix_point_])) {
-				swap(v_[parent_point_], v_[fix_point_]);
+				std::swap(v_[parent_point_], v_[fix_point_]);
 				fix_point_ = parent_point_;
 			}
 			else {
@@ -94,7 +95,7 @@ namespace YING {
 
 	template <typename T, typename Compare>
 	T Heap_<T, Compare>::top_() const {
-		return v_[v_.size() - 1];
+		return v_[1];
 	}
 
 	template <typename T, typename Compare>

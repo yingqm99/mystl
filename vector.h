@@ -45,7 +45,7 @@ namespace YING {
 		Iterator end() const;
 		
 		size_t size() const;
-		T operator[](int index) const;
+		T& operator[](int index) const;
 		Vector<T, Allocator>& operator=(const Vector<T, Allocator>& other);
 		Vector<T, Allocator>& operator*(const Vector<T, Allocator>* v_);
 	private:
