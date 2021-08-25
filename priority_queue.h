@@ -21,7 +21,9 @@ namespace YING {
 		void pop_top_();
 
 	private:
-		friend class priority_queue;
+		template <typename T_, typename Compare_ = std::less<T_>>
+		friend class Priority_queue;
+
 		void fix_down_(int index_);
 		void fix_up_(int index_);
 		int find_(const T& value) const;

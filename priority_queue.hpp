@@ -28,19 +28,19 @@ namespace YING {
 		while (fix_point_ * 2 < v_.size()) {
 			int child_1_ = fix_point_ * 2;
 			int child_2_ = fix_point_ * 2 + 1;
-			if (child_2 == v_size()) {
+			if (child_2_ == v_.size()) {
 				if (comp_(v_[fix_point_], v_[child_1_])) {
 					std::swap(v_[fix_point_], v_[child_1_]);
-					break;
 				}
+				break;
 			}
 			else {
 				int child_swap_ = child_1_;
 				if (comp_(v_[child_swap_], v_[child_2_])) {
 					child_swap_ = child_2_;
 				}
-				if (comp_(v_[fix_point_], v_[child_1_])) {
-					std::swap(v_[fix_point_], v_[child_1_]);
+				if (comp_(v_[fix_point_], v_[child_swap_])) {
+					std::swap(v_[fix_point_], v_[child_swap_]);
 					fix_point_ = child_swap_;
 				}
 				else {
@@ -101,7 +101,9 @@ namespace YING {
 	template <typename T, typename Compare>
 	void Heap_<T, Compare>::pop_top_() {
 		assert(!v_.empty());
+		std::swap(v_[1], v_[v_.size() - 1]);
 		v_.pop_back();
+		fix_down_(1);
 	}
 
 	template <typename T, typename Compare>
@@ -125,11 +127,13 @@ namespace YING {
 
 	template <typename T, typename Compare>
 	void Priority_queue<T, Compare>::pop() {
+		assert(!heap_.empty());
 		heap_.pop_top_();
 	}
 
 	template <typename T, typename Compare>
 	T Priority_queue<T, Compare>::top() const {
+		assert(!heap_.empty());
 		return heap_.top_();
 	}
 

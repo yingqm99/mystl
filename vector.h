@@ -20,7 +20,7 @@ namespace YING {
 			Iterator& operator=(const Iterator& rhs);
 			bool operator==(const Iterator& rhs) const;
 			bool operator!=(const Iterator& rhs) const;
-			T operator*() const;
+			T& operator*() const;
 
 			const Vector<T, Allocator>* get_v_() const;
 			int get_index_() const;

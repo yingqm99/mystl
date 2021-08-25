@@ -39,7 +39,6 @@ namespace YING {
 		}
 		alloc_.deallocate(data_, size());
 	}
-
 	template <typename T, typename Allocator>
 	void Vector<T, Allocator>::push_back(const T& value) {
 		if (size_ == capacity_) {
@@ -126,11 +125,11 @@ namespace YING {
 	template <typename T, typename Allocator>
 	typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::Iterator::operator++(int) {
 		Vector<T, Allocator>::Iterator _temp = *this;
-		index_++;
+		++(*this);
 		if (index_ == v_->size()) {
 			index_ = -1;
 		}
-		return *this;
+		return _temp;
 	}
 
 	template <typename T, typename Allocator>
@@ -139,18 +138,25 @@ namespace YING {
 			return *this;
 		}
 		index_--;
+		if (index_ == -1) {
+			v_ = nullptr;
+		}
 		return *this;
 	}
 
 	template <typename T, typename Allocator>
 	typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::Iterator::operator--(int) {
 		Vector<T, Allocator>::Iterator _temp = *this;
-		index_--;
+		--(*this);
+		if (index_ == -1) {
+			v_ = nullptr;
+			index_ = -1;
+		}
 		return _temp;
 	}
 
 	template <typename T, typename Allocator>
-	T Vector<T, Allocator>::Iterator::operator*() const {
+	T& Vector<T, Allocator>::Iterator::operator*() const {
 		// std::cout << v_->size() << " " << index_ << std::endl;
 		return (*v_)[index_];
 	}
